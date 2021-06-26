@@ -9,11 +9,26 @@
         class="input"
         v-model="search"
     />
-    <BaseButton/>
+    <BaseButton
+        v-on:click.native="filterShow"
+    />
     </div>
-      <div v-for="job in filteredJobs" :key="job.name">
-      <JobList :jobs="job" />
+      <div v-if="showFilter" class="filter">
+        <a class="filter--label">Sort by:</a>
+        <select
+            v-model="sort"
+        >
+          <option
+              v-for="item in options"
+              :key="item.id"
+              :label="item.label"
+              :value="item.value"
+          />
+        </select>
       </div>
+    <div v-for="job in filteredJob" :key="job.id">
+    <JobItem :job="job"/>
+    </div>
     </BaseLayout>
   </div>
 </template>
@@ -22,23 +37,44 @@
 import BaseTextField from "./components/BaseTextField";
 import BaseButton from "./components/BaseButton";
 import BaseLayout from "./components/BaseLayout";
-import JobList from "./components/JobList";
+import JobItem from "./components/JobItem"
 
 export default {
   name: 'App',
   computed:{
-    filteredJobs(){
-      return this.jobs.filter(job => job.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()))
-    }
+    filteredJob(){
+      const jobs = this.jobs.filter((job) =>{
+        return job.name.toLowerCase().includes(this.search.toLowerCase())
+      });
+      if(this.sort == 'view'){
+        return jobs.sort(function (a,b) {
+          return b.views - a.views
+        });
+      }else{
+        return jobs
+      }
+    },
   },
   components: {
-    JobList,
     BaseLayout,
     BaseButton,
-    BaseTextField
+    BaseTextField,
+    JobItem
   },
   data(){
     return{
+      sort:"",
+      options:[
+        {
+          label:"Default",
+          value:'none'
+        },
+        {
+          label: "Views",
+          value: 'view'
+        }
+      ],
+      showFilter:false,
       search:"",
       jobs:[
         {
@@ -135,11 +171,17 @@ export default {
         }
       ]
     }
+  },
+  methods:{
+    filterShow(){
+      console.log("check")
+      this.showFilter = !this.showFilter
+    }
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 #app {
 
 
@@ -150,5 +192,24 @@ export default {
 }
 .input{
   margin-bottom: 8px;
+}
+.filter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  margin-top: 9px;
+  &--label{
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #636363;
+   }
+}
+.arrow-down{
+  width: 13px;
+  height: 9px;
 }
 </style>

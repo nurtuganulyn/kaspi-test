@@ -41,12 +41,7 @@
 <script>
 export default {
   name:'JobItem',
-  props:{
-    job:{
-      type:Object,
-      required:true
-    }
-  }
+  props:["job"]
 }
 
 </script>
@@ -56,7 +51,7 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 8px rgba(33, 33, 33, 0.16);
   border-radius: 8px;
-  width: 92%;
+  width: 90%;
   height: 138px;
   margin-bottom: 16px;
   display: flex;

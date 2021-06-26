@@ -28,4 +28,8 @@
     <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4" id="divider">
         <circle cx="2" cy="2" r="2" fill="#C4C4C4"></circle>
     </symbol>
+
+    <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 9" id="arrow-down">
+        <path d="M5.66 8.034a.644.644 0 00.902 0l5.333-5.305c.246-.273.246-.684 0-.93l-.63-.629c-.245-.246-.656-.246-.93 0l-4.21 4.211-4.238-4.21c-.274-.247-.684-.247-.93 0l-.629.628c-.246.246-.246.657 0 .93L5.66 8.034z" fill="#636363"></path>
+    </symbol>
 </svg>

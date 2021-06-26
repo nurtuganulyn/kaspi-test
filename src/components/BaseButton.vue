@@ -1,12 +1,28 @@
 <template>
-  <button class="filter-button">
-    sda
-  </button>
+  <component
+      :class="'filter-button'"
+      v-bind="$attrs"
+      v-on="$listeners"
+      :is="tag"
+  >
+    <slot>
+      <svg  class="filter-button__logos">
+        <use :xlink:href="require('@/assets/icons/sprite.svg') + '#filter'"></use>
+      </svg>
+    </slot>
+  </component>
 </template>
 
 <script>
 export default {
-  name:'BaseButton'
+  name:'BaseButton',
+  props:{
+    tag: {
+      type: String,
+      default: "button",
+    },
+
+  }
 }
 </script>
 
@@ -19,5 +35,9 @@ export default {
   background: #FFC803;
   border-radius: 8px;
   border: none;
+  &__logos{
+    width: 14px;
+    height: 18px;
+  }
 }
 </style>

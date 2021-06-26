@@ -5,6 +5,7 @@
         class="text-block__input"
         :type="text"
         :value="value"
+        @input="inputHandle"
 
     />
     <svg v-if="magnifier" class="text-block__magnifier">
@@ -31,6 +32,11 @@ export default {
       required: true,
     },
   },
+  methods:{
+    inputHandle(e) {
+      this.$emit('input', e.target.value);
+    }
+  }
 }
 
 </script>
@@ -73,6 +79,7 @@ export default {
     border-radius: 8px;
     border:none;
     padding-left: 36px;
+    line-height: 15px;
     &:focus~#{$self}__label {
       top: 25px;
       font-size: 10px;
