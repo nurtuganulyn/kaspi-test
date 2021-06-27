@@ -14,6 +14,22 @@
       "name": "Media manager",
       "company": "Lombrisol",
       "location": {
+       {
+  "jobs": [
+    {
+      "name": "Senior Software Developer (Re-advertised)",
+      "company": "I&M Bank",
+      "location": {
+        "country": "Kenya",
+        "city": "Nairobi"
+      },
+      "postedDaysAgo": 3,
+      "views": 420
+    },
+    {
+      "name": "Media manager",
+      "company": "Lombrisol",
+      "location": {
         "country": "Morocco",
         "city": "Ait Melloul"
       },
